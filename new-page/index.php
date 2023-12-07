@@ -2,11 +2,8 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Новая страница");
 
-use Bitrix\Main\Page\Asset;
-use \Bitrix\Main\Loader;
-use intec\core\helpers\Html;
+use \Bitrix\Main\Page\Asset;
 
-Loader::includeModule('iblock');
 
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/swiper.min.css");
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/nodes.css");
@@ -15,20 +12,11 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/fslightbox.js");
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/nodes.js");
 
 $arResult = [];
+?>
 
-$arBanners = \Bitrix\Iblock\Elements\ElementBannerNodesTable::getList([
-    'select' => [
-            'ID',
-            'SLIDER_IMAGE_' => 'SLIDER_IMAGE'
-    ],
-    'filter' => [
-            '=ACTIVE' => 'Y'
-    ],
-])->fetchAll();
 
-foreach ($arBanners as $arBanner) {
-    $arResult['BANNERS'][] = CFile::GetPath($arBanner['SLIDER_IMAGE_IBLOCK_GENERIC_VALUE']);
-}
+
+<?php
 
 $obProducts = \Bitrix\Iblock\Elements\ElementNodesProductsTable::getList([
     'select' => [
@@ -51,7 +39,7 @@ foreach ($obProducts as $obProduct) {
 
     $arResult['PRODUCTS'][$id]['NAME'] = $obProduct->getName();
     $arResult['PRODUCTS'][$id]['IMAGE'] = CFile::GetPath($obProduct->getProductImage()->getValue());
-    $arResult['PRODUCTS'][$id]['ICONS'] = unserialize($obProduct->getProductsIcons()->getValue());
+    //$arResult['PRODUCTS'][$id]['ICONS'] = unserialize($obProduct->getProductsIcons()->getValue());
 
     if ($obProduct->getPdf()) {
         $arResult['PRODUCTS'][$id]['PDF'] = CFile::GetPath($obProduct->getPdf()->getValue());
@@ -129,35 +117,16 @@ foreach ($obProjects as $obProject) {
 
     <div class="intec-content">
         <div class="intec-content-wrapper">
-            <div class="banner">
-                <div class="banner__slider swiper">
-                    <div class="swiper-wrapper">
-                        <?php if ($arResult['BANNERS']) { ?>
-                            <?php foreach ($arResult['BANNERS'] as $arBanner) { ?>
-                                <div class="swiper-slide">
-                                    <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/nodes/banner.png" alt="slide">
-                                </div>
-                            <?php } ?>
-                        <?php } ?>
-                    </div>
-                    <div class="swiper-pagination banner__pagination"></div>
-                </div>
-                <div class="banner__content">
-                    <h1 class="banner__title">
-                        ЕДИНСТВЕННЫЕ В РОССИИ ПОЛНОФУНКЦИОНАЛЬНЫЕ МОБИЛЬНЫЕ РАСТВОРНЫЕ УЗЛЫ
-                    </h1>
-                    <ul class="banner__list">
-                        <li class="banner__item">Перевозка препаратов в растворном узле</li>
-                        <li class="banner__item">Заправляется препаратами на базе</li>
-                        <li class="banner__item">Растворный узел и 10 т воды на одном прицепе КАМАЗа</li>
-                        <li class="banner__item">Встроенная мешалка для порошковых СЗР</li>
-                    </ul>
-                    <div class="banner__btns">
-                        <a class="banner__download" href="/" download>Скачать опросный лист</a>
-                        <a class="banner__play" href="/">Смотреть презентацию <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/nodes/play-icon.svg" alt="icon"></a>
-                    </div>
-                </div>
-            </div>
+
+            <?php
+            $APPLICATION->IncludeComponent(
+                'coderoom:banners.nodes',
+                '',
+                [
+                    'HEADER' => 'ЕДИНСТВЕННЫЕ В РОССИИ ПОЛНОФУНКЦИОНАЛЬНЫЕ МОБИЛЬНЫЕ РАСТВОРНЫЕ УЗЛЫ'
+                ]
+            );
+            ?>
 
             <div class="products">
 
@@ -169,26 +138,30 @@ foreach ($obProjects as $obProject) {
 
                                 <?php echo $arProduct['ICONS']['TEXT']; ?>
 
-                                <img class="image" src="<?php echo $arProduct['IMAGE']; ?>" alt="<?php echo $arProduct['NAME']; ?>">
+                                <img class="image" src="<?php echo $arProduct['IMAGE']; ?>"
+                                     alt="<?php echo $arProduct['NAME']; ?>">
                             </div>
                             <div class="products__block">
                                 <h2 class="products__title desktop"><?php echo $arProduct['NAME']; ?></h2>
                                 <div class="products__tabs">
-                                   <?php foreach ($arProduct['TABS'] as $arTab) { ?>
-                                       <div class="products__tab">
-                                           <div class="products__header">
-                                               <span class="products__name"><?php echo $arTab['NAME']; ?></span>
-                                               <div class="products__icon">
-                                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                       <path fill-rule="evenodd" clip-rule="evenodd" d="M8.58579 9.99986L0.807613 17.778L2.22183 19.1922L10 11.4141L17.7782 19.1922L19.1924 17.778L11.4142 9.99986L19.1924 2.22168L17.7782 0.807471L10 8.58565L2.22183 0.80747L0.807613 2.22168L8.58579 9.99986Z" fill="white"/>
-                                                   </svg>
-                                               </div>
-                                           </div>
-                                           <div class="products__content"><?php echo $arTab['CONTENT']['TEXT']; ?></div>
-                                       </div>
+                                    <?php foreach ($arProduct['TABS'] as $arTab) { ?>
+                                        <div class="products__tab">
+                                            <div class="products__header">
+                                                <span class="products__name"><?php echo $arTab['NAME']; ?></span>
+                                                <div class="products__icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                         viewBox="0 0 20 20" fill="none">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M8.58579 9.99986L0.807613 17.778L2.22183 19.1922L10 11.4141L17.7782 19.1922L19.1924 17.778L11.4142 9.99986L19.1924 2.22168L17.7782 0.807471L10 8.58565L2.22183 0.80747L0.807613 2.22168L8.58579 9.99986Z"
+                                                              fill="white"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="products__content"><?php echo $arTab['CONTENT']['TEXT']; ?></div>
+                                        </div>
                                     <?php } ?>
                                 </div>
-                                <?php if($arProduct['PDF']) { ?>
+                                <?php if ($arProduct['PDF']) { ?>
                                     <div class="products__files">
                                         <a href="<?php echo $arProduct['PDF']; ?>" download>
                                             <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/nodes/pdf.svg" alt="pdf">
@@ -208,7 +181,8 @@ foreach ($obProjects as $obProject) {
                         <?php $i = 0; ?>
                         <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
                             <?php if ($i <= 2) { ?>
-                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item" style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
+                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
+                                   style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
                                     <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
                                     <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
                                 </a>
@@ -220,7 +194,8 @@ foreach ($obProjects as $obProject) {
                         <?php $a = 0; ?>
                         <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
                             <?php if ($a <= 4 && $a > 2) { ?>
-                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item" style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
+                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
+                                   style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
                                     <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
                                     <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
                                 </a>
@@ -232,7 +207,8 @@ foreach ($obProjects as $obProject) {
                         <?php $b = 0; ?>
                         <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
                             <?php if ($b <= 7 && $b > 4) { ?>
-                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item" style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
+                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
+                                   style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
                                     <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
                                     <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
                                 </a>
@@ -243,7 +219,8 @@ foreach ($obProjects as $obProject) {
 
                     <div class="system__row mobile">
                         <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
-                            <a href="<?php echo $arSystem['LINK']; ?>" class="system__item" style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
+                            <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
+                               style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
                                 <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
                                 <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
                             </a>
@@ -255,12 +232,13 @@ foreach ($obProjects as $obProject) {
             <div class="form">
                 <div class="form__wrap">
                     <form class="form__form">
-                        <h3 class="form__title">Пригласите меня к себе на предприятие для оценки и более глубокого понимания вашего запроса</h3>
+                        <h3 class="form__title">Пригласите меня к себе на предприятие для оценки и более глубокого
+                            понимания вашего запроса</h3>
                         <div class="form__inputs">
                             <input type="text" placeholder="Имя" name="name" required>
                             <input type="text" placeholder="Телефон" name="phone" required>
                         </div>
-                        <button class="form__btn" >Заказать звонок</button>
+                        <button class="form__btn">Заказать звонок</button>
                         <p class="form__status green">Ваша заявка успешно отправлена.</p>
                     </form>
                     <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/nodes/form-image.png" alt="image">
@@ -304,7 +282,7 @@ foreach ($obProjects as $obProject) {
                         <span class="benefit__count">02</span>
                         <p class="benefit__name">Обучение</p>
                         <ul class="benefit__list">
-                            <li>Оцифровка схем обработок  СЗР</li>
+                            <li>Оцифровка схем обработок СЗР</li>
                             <li>Обучение персонала и сопровождение производства</li>
                             <li>Настройка синхронизации данных с ГИС</li>
                         </ul>
@@ -326,12 +304,12 @@ foreach ($obProjects as $obProject) {
                 <div class="projects__items">
                     <div class="projects__row two">
                         <?php $i = 0; ?>
-                            <?php foreach ($arResult['PROJECTS'] as $image) { ?>
-                                <?php if ($i <= 1) { ?>
-                                    <a data-fslightbox="desktop" href="<?php echo $image; ?>" class="projects__item">
-                                        <img src="<?php echo $image; ?>" alt="image">
-                                    </a>
-                                <?php } ?>
+                        <?php foreach ($arResult['PROJECTS'] as $image) { ?>
+                            <?php if ($i <= 1) { ?>
+                                <a data-fslightbox="desktop" href="<?php echo $image; ?>" class="projects__item">
+                                    <img src="<?php echo $image; ?>" alt="image">
+                                </a>
+                            <?php } ?>
                             <?php $i++; ?>
                         <?php } ?>
                     </div>
@@ -362,7 +340,7 @@ foreach ($obProjects as $obProject) {
                             <a data-fslightbox="mobile" href="<?php echo $image; ?>" class="projects__item">
                                 <img src="<?php echo $image; ?>" alt="image">
                             </a>
-                       <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
