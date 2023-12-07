@@ -1,7 +1,20 @@
 <?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+}
+/** @var array $arParams */
+/** @var array $arResult */
+/** @global CMain $APPLICATION */
+/** @global CUser $USER */
+/** @global CDatabase $DB */
+/** @var CBitrixComponentTemplate $this */
+/** @var string $templateName */
+/** @var string $templateFile */
+/** @var string $templateFolder */
+/** @var string $componentPath */
+/** @var CBitrixComponent $component */
 ?>
 <div class="products">
-
     <?php foreach ($arResult['ITEMS'] as $arProduct) { ?>
         <div class="products__item">
             <h2 class="products__title mobile"><?php echo $arProduct['NAME']; ?></h2>
