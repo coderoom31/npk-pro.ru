@@ -1,0 +1,157 @@
+$namespace: 'bitrix';
+$component: 'form-result-new';
+$template: 'template-1';
+$class: $component;
+
+.ns-#{$namespace}.c-#{$component}.c-#{$component}-#{$template} {
+  display: block;
+  overflow: hidden;
+
+  .#{$class}-message,
+  .#{$class}-description {
+    display: block;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+
+    p {
+      margin: 0;
+    }
+
+    font {
+      color: inherit !important;
+    }
+  }
+
+  .#{$class}-message {
+    &.#{$class}-message-note {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+  }
+
+  .#{$class}-fields {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .#{$class}-field {
+    display: block;
+    margin-top: 24px;
+    padding: 0;
+  }
+
+  .#{$class}-message-note {
+    margin-top: 30px;
+  }
+
+  .#{$class}-message-note .#{$class}-message-note-icon {
+    margin-right: 20px;
+  }
+
+  .#{$class}-message-note .#{$class}-message-note-text {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #404040;
+  }
+
+  .#{$class}-message-note-button-wrapper {
+    margin-top: 38px;
+  }
+
+  .#{$class}-message-note-button {
+    padding: 23px 56px;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+
+  .#{$class}-field-title {
+    margin-bottom: 8px;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 13px;
+    color: #808080;
+  }
+  .#{$class}-field-content > input.intec-ui-control-input {
+    min-height: 48px;
+    padding: 17px 0 17px 16px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    color: #404040;
+    background: #FBFCFD;
+    border: 1px solid #F2F2F2;
+  }
+  .#{$class}-field-content > textarea.intec-ui-control-input {
+    min-height: 144px;
+    resize: none;
+    background: #FBFCFD;
+    border: 1px solid #F2F2F2;
+    font-size: 14px;
+    line-height: 14px;
+    color: #404040;
+    padding: 17px 16px;
+  }
+
+  .#{$class}-captcha {}
+
+  .#{$class}-captcha-image {
+    img {
+      width: 180px;
+      height: 40px;
+    }
+  }
+
+  .#{$class}-captcha-input {}
+
+  .#{$class}-consent {
+    margin: 37px 0;
+  }
+
+  .#{$class}-consent .intec-ui-part-selector {
+    width: 50px;
+    height: 28px;
+    border-radius: 16px;
+    background: #E8E8E8;
+  }
+
+  .#{$class}-consent .intec-ui.intec-ui-control-switch input:checked + .intec-ui-part-selector:before {
+    left: 28px;
+  }
+
+  .#{$class}-consent .intec-ui-part-selector:before {
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0px 6px 4px rgba(27, 30, 37, 0.12);
+  }
+
+  .#{$class}-consent .intec-ui-part-content {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
+    color: #808080;
+    padding-left: 16px;
+  }
+
+  .#{$class}-buttons .intec-ui-control-button {
+    padding: 23px 56px;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border-radius: 2px;
+  }
+}

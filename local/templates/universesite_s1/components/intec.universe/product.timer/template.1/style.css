@@ -1,0 +1,76 @@
+.widget.c-product-timer.c-product-timer-template-1 {
+  width: 100%;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-error {
+  color: red;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-title {
+  font-size: 16px;
+  margin-bottom: 7px;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-date-end {
+  display: none;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-block {
+  width: 50px;
+  height: 46px;
+  padding: 6px 10px;
+  line-height: 1;
+  text-align: center;
+  background: #F2F2F2;
+  border-radius: 2px;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-wrapper-2 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-time-wrapper[data-seconds=false] {
+  max-width: 170px;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-time-wrapper[data-seconds=true] {
+  max-width: 220px;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-header {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  color: #404040;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-time {
+  font-weight: bold;
+  font-size: 16px;
+  color: #404040;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-description {
+  font-weight: 500;
+  margin-top: 2px;
+  font-size: 12px;
+  color: #808080;
+}
+.widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-block.timer-quantity {
+  width: fit-content;
+  width: -moz-fit-content;
+  background: #FBCD56;
+  overflow: hidden;
+}
+
+@media all and (max-width: 450px) {
+  .product-timer-adaptation.small .widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-wrapper {
+    display: block !important;
+  }
+
+  .product-timer-adaptation.super-small .widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-wrapper {
+    display: block !important;
+  }
+  .product-timer-adaptation.super-small .widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-items {
+    flex-wrap: wrap;
+  }
+  .product-timer-adaptation.super-small .widget.c-product-timer.c-product-timer-template-1 .widget-product-timer-item-wrapper {
+    flex: 0 0 33.33333% !important;
+    max-width: 33.33333% !important;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

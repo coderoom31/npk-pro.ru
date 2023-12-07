@@ -1,0 +1,44 @@
+@import './../../../../sources/styles/include.scss';
+
+$component: 'news';
+$template: 'template-4';
+$item: 'widget-item';
+
+.widget.c-#{$component}.c-#{$component}-#{$template} {
+  .#{$item} {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  .#{$item}-date {
+    font-size: 12px;
+    line-height: 12px;
+    color: #898989;
+    margin-bottom: 10px;
+  }
+  .#{$item}-name {
+    display: block;
+    font-size: 14px;
+    line-height: 21px;
+    color: #353639;
+    text-decoration: none;
+    @include transition(0.4s, color);
+  }
+  .widget-footer-button {
+    color: #2d2d2d !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #fff !important;
+    }
+  }
+}

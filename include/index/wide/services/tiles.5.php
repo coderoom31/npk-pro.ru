@@ -1,0 +1,65 @@
+<?php if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
+<?php
+
+use intec\core\collections\Arrays;
+use intec\core\helpers\Html;
+use intec\core\io\Path;
+
+/**
+ * @var Arrays $blocks
+ * @var array $block
+ * @var array $data
+ * @var string $page
+ * @var Path $path
+ * @global CMain $APPLICATION
+ */
+
+?>
+<?= Html::beginTag('div', ['style' => [
+    'margin-top' => '100px',
+    'margin-bottom' => '100px'
+]]) ?>
+    <?php $APPLICATION->IncludeComponent(
+	"intec.universe:main.services", 
+	"template.2", 
+	array(
+		"IBLOCK_TYPE" => "catalogs",
+		"IBLOCK_ID" => "16",
+		"ELEMENTS_COUNT" => "10",
+		"SETTINGS_USE" => "Y",
+		"LAZYLOAD_USE" => "N",
+		"PROPERTY_PRICE" => "PRICE",
+		"HEADER_BLOCK_SHOW" => "Y",
+		"HEADER_BLOCK_POSITION" => "center",
+		"HEADER_BLOCK_TEXT" => "ОБОРУДОВАНИЕ ДЛЯ СЗР",
+		"DESCRIPTION_BLOCK_SHOW" => "N",
+		"TEMPLATE_VIEW" => "mosaic",
+		"PRICE_SHOW" => "N",
+		"BUTTON_SHOW" => "Y",
+		"BUTTON_TYPE" => "order",
+		"BUTTON_FORM_ID" => "6",
+		"FORM_FIELD" => "20",
+		"FORM_TEMPLATE" => ".default",
+		"FORM_TITLE" => "Заказать услугу",
+		"CONSENT_URL" => "/company/consent/",
+		"BUTTON_TEXT" => "ЗАКАЗАТЬ",
+		"FOOTER_SHOW" => "N",
+		"SECTION_URL" => "",
+		"DETAIL_URL" => "",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "3600000",
+		"SORT_BY" => "SORT",
+		"ORDER_BY" => "ASC",
+		"COMPONENT_TEMPLATE" => "template.2",
+		"SECTIONS" => array(
+			0 => "",
+			1 => "",
+		),
+		"PROPERTY_CURRENCY" => "",
+		"PRICE_OLD_SHOW" => "N",
+		"PROPERTY_FORMAT_USE" => "N",
+		"LIST_PAGE_URL" => ""
+	),
+	false
+); ?>
+<?= Html::endTag('div') ?>

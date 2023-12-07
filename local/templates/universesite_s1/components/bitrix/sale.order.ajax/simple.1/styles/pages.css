@@ -1,0 +1,97 @@
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-table {
+  margin-bottom: 40px;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-table-icon {
+  vertical-align: middle;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-table-icon img {
+  padding-right: 20px;
+  max-width: 150px;
+  max-height: 150px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-table-content {
+  vertical-align: middle;
+  font-size: 14px;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-block {
+  display: block;
+  border: 1px solid #f2f2f2;
+  background: #fff;
+  margin-bottom: 40px;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-block-title {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+  padding: 10px 15px;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-block-content {
+  display: block;
+  padding: 5px 15px 15px 15px;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-payment-information {
+  display: block;
+  margin: -10px;
+  font-size: 0;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-payment-logotype,
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-payment-name {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-payment-name {
+  font-size: 16px;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-payment-addition {
+  margin-top: 20px;
+  padding: 20px;
+  background: #fbfbfb;
+}
+.bx-soa-page.bx-soa-page-confirm .bx-soa-page-payment-addition .sale-paysystem-wrapper {
+  border: none;
+  padding: 0;
+  color: #1d1d1d;
+}
+@media all and (max-width: 580px) {
+  .bx-soa-page.bx-soa-page-confirm .bx-soa-page-table-icon {
+    vertical-align: top;
+  }
+  .bx-soa-page.bx-soa-page-confirm .bx-soa-page-table-icon img {
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .bx-soa-page.bx-soa-page-confirm .bx-soa-page-table-content {
+    vertical-align: top;
+    font-size: 12px;
+  }
+  .bx-soa-page.bx-soa-page-confirm .bx-soa-page-block-title {
+    font-size: 14px;
+  }
+}
+.bx-soa-page.bx-soa-page-empty .bx-soa-page-image {
+  width: 131px;
+  height: 116px;
+  margin: 50px auto 42px;
+  background: url("./images/empty_cart.svg") no-repeat center;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.bx-soa-page.bx-soa-page-empty .bx-soa-page-title {
+  font-size: 36px;
+  text-align: center;
+  color: #bababa;
+  margin-bottom: 42px;
+}
+.bx-soa-page.bx-soa-page-empty .bx-soa-page-description {
+  text-align: center;
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 42px;
+}
+
+/*# sourceMappingURL=pages.css.map */

@@ -1,0 +1,13 @@
+<svg width="41" height="48" viewBox="0 0 41 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="36" width="24" height="2" fill="#005290"/>
+<rect x="10" y="41" width="24" height="2" fill="#005290"/>
+<rect x="10" y="31" width="24" height="2" fill="#005290"/>
+<rect x="10" y="6" width="16" height="2" fill="#005290"/>
+<rect x="10" y="11" width="17" height="2" fill="#005290"/>
+<rect x="10" y="16" width="24" height="2" fill="#005290"/>
+<rect x="10" y="21" width="24" height="2" fill="#005290"/>
+<rect x="10" y="26" width="24" height="2" fill="#005290"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0H26.0295L28.0295 2H27.9982L38 11.9983V11.9705L40 13.9705V13.9976L40.0219 14.0194L40 14.0194V46C40 47.1046 39.1046 48 38 48H6C4.89543 48 4 47.1046 4 46V2C4 0.895432 4.89543 0 6 0ZM38 14.0198L28.0025 14.0216C26.8979 14.0218 26.0023 13.1265 26.0021 12.0219L26.0003 2H6V46H38V14.0198Z" fill="#005290"/>
+<rect y="21" width="25" height="21" rx="2" fill="#005290"/>
+<path d="M20.872 25.8L17.16 37H14.952L12.184 28.712L9.368 37H7.144L3.432 25.8H5.592L8.376 34.312L11.272 25.8H13.192L16.024 34.36L18.888 25.8H20.872Z" fill="white"/>
+</svg>
