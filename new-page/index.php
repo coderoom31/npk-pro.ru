@@ -15,28 +15,7 @@ $arResult = [];
 ?>
 
 
-
 <?php
-$arSystems = \Bitrix\Iblock\Elements\ElementNodesSystemTable::getList([
-    'select' => [
-        'ID',
-        'NAME',
-        'PREVIEW_PICTURE',
-        'PREVIEW_TEXT',
-        'LINK_' => 'LINK'
-    ],
-    'filter' => [
-        '=ACTIVE' => 'Y'
-    ],
-])->fetchAll();
-
-foreach ($arSystems as $arSystem) {
-    $arResult['SYSTEMS'][$arSystem['ID']]['NAME'] = $arSystem['NAME'];
-    $arResult['SYSTEMS'][$arSystem['ID']]['IMAGE'] = CFile::GetPath($arSystem['PREVIEW_PICTURE']);
-    $arResult['SYSTEMS'][$arSystem['ID']]['TEXT'] = $arSystem['PREVIEW_TEXT'];
-    $arResult['SYSTEMS'][$arSystem['ID']]['LINK'] = $arSystem['LINK_VALUE'];
-}
-
 $arOffers = \Bitrix\Iblock\Elements\ElementNodesOfferTable::getList([
     'select' => [
         'ID',
@@ -96,61 +75,15 @@ foreach ($obProjects as $obProject) {
             );
             ?>
 
+            <?php
+            $APPLICATION->IncludeComponent(
+                'coderoom:mixing_system.nodes',
+                '',
+                [
 
-            <div class="system">
-                <h2 class="system__title">Смесительные системы Mixmate</h2>
-                <div class="system__grid">
-                    <div class="system__row three">
-                        <?php $i = 0; ?>
-                        <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
-                            <?php if ($i <= 2) { ?>
-                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
-                                   style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
-                                    <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
-                                    <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
-                                </a>
-                            <?php } ?>
-                            <?php $i++; ?>
-                        <?php } ?>
-                    </div>
-                    <div class="system__row two">
-                        <?php $a = 0; ?>
-                        <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
-                            <?php if ($a <= 4 && $a > 2) { ?>
-                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
-                                   style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
-                                    <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
-                                    <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
-                                </a>
-                            <?php } ?>
-                            <?php $a++; ?>
-                        <?php } ?>
-                    </div>
-                    <div class="system__row three">
-                        <?php $b = 0; ?>
-                        <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
-                            <?php if ($b <= 7 && $b > 4) { ?>
-                                <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
-                                   style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
-                                    <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
-                                    <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
-                                </a>
-                            <?php } ?>
-                            <?php $b++; ?>
-                        <?php } ?>
-                    </div>
-
-                    <div class="system__row mobile">
-                        <?php foreach ($arResult['SYSTEMS'] as $arSystem) { ?>
-                            <a href="<?php echo $arSystem['LINK']; ?>" class="system__item"
-                               style="background-image: url('<?php echo $arSystem['IMAGE']; ?>')">
-                                <button class="system__btn"><?php echo $arSystem['NAME']; ?></button>
-                                <p class="system__descr"><?php echo $arSystem['TEXT']; ?></p>
-                            </a>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
+                ]
+            );
+            ?>
 
             <div class="form">
                 <div class="form__wrap">
