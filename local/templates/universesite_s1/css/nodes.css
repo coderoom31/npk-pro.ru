@@ -261,6 +261,7 @@
     gap: 8px;
     justify-content: flex-end;
     text-decoration: none !important;
+    background-size: cover;
 }
 
 .system__item:after {
@@ -556,6 +557,7 @@
 
 .products__img {
     position: relative;
+    height: max-content;
 }
 
 .products__img .products__popup {

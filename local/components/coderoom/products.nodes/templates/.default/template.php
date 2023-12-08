@@ -48,7 +48,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     </div>
                     <?php if ($arProduct['PDF']) { ?>
                         <div class="products__files">
-                            <a href="<?php echo $arProduct['PDF']; ?>" download>
+                            <a href="<?php echo $arProduct['PDF']; ?>" target="_blank">
                                 <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/nodes/pdf.svg" alt="pdf">
                             </a>
                         </div>

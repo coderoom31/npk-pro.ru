@@ -21,18 +21,27 @@ class CoderoomMixingSystemNodes extends CBitrixComponent
                 'NAME',
                 'PREVIEW_PICTURE',
                 'PREVIEW_TEXT',
-                'LINK_' => 'LINK'
+                'LINK_' => 'LINK',
+                'SORT'
             ],
             'filter' => [
                 '=ACTIVE' => 'Y'
             ],
+            'order' => [
+                'SORT' => 'ASC'
+            ]
         ])->fetchAll();
 
         foreach ($arSystems as $arSystem) {
-            $this->arResult['ITEMS'][$arSystem['ID']]['NAME'] = $arSystem['NAME'];
-            $this->arResult['ITEMS'][$arSystem['ID']]['IMAGE'] = \CFile::GetPath($arSystem['PREVIEW_PICTURE']);
-            $this->arResult['ITEMS'][$arSystem['ID']]['TEXT'] = $arSystem['PREVIEW_TEXT'];
-            $this->arResult['ITEMS'][$arSystem['ID']]['LINK'] = $arSystem['LINK_VALUE'];
+            $arItem = [];
+
+
+            $arItem['NAME'] = $arSystem['NAME'];
+            $arItem['IMAGE'] = \CFile::GetPath($arSystem['PREVIEW_PICTURE']);
+            $arItem['TEXT'] = $arSystem['PREVIEW_TEXT'];
+            $arItem['LINK'] = $arSystem['LINK_VALUE'];
+
+            $this->arResult['ITEMS'][] = $arItem;
         }
     }
 }
